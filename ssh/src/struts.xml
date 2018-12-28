@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	
+	
+	<!-- 先配置包结构 -->
+	<package name="ssh" extends="struts-default" namespace="/">
+		
+		
+		
+		<!-- 定义了拦截器 第一种方式
+    <interceptors>
+        <interceptor name="DemoInterceptor" class="com.itheima.interceptor.DemoInterceptor"/>
+    </interceptors>
+    -->
+    
+	<!--   定义拦截器栈
+    <interceptors>
+        <interceptor name="loginFilter" class="com.shuai.filter.LoginFilter"/>
+        
+        <interceptor-stack name="myStack">
+            <interceptor-ref name="loginFilter"/>
+            <interceptor-ref name="defaultStack"/>
+        </interceptor-stack>
+    </interceptors>
+	 -->
+		
+		
+		<!-- 配置客户的Action，如果Action由Spring框架来管理，class标签上只需要编写ID值就OK -->
+		<action name="user_*" class="UserAction" method="{1}">
+			<!--  <interceptor-ref name="myStack"/>  -->
+			<result name="overlogin">main.jsp</result>
+			 <result name="tologin">index.jsp</result>
+		</action>	
+		
+		<action name="car_*" class="CarAction" method="{1}">
+		
+			<result name="carlist">carlist.jsp</result>
+			 
+		</action>
+	</package>
+    
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+

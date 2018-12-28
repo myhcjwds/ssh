@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	
+	<class name="com.shuai.domain.Car" table="car">
+	 	<!--  如果数据库字段名和持久化类 中字段名称一致，cloumn可不写-->
+		<id name="car_id" column="car_id">
+			<!--  如果是mysql则使用mysql提供的主键id自动递增，如果是oracle则利用oracle提供的序列递增-->
+			<generator class="native"/> 
+		</id>
+		<!-- 属性映射 -->
+		<property name="car_name" column="car_name"/>
+		<property name="car_brand" column="car_brand"/>
+		
+		<many-to-one name="user" class="com.shuai.domain.User" column="user_car_id"/>
+		
+	
+	</class>
+	
+</hibernate-mapping>    
